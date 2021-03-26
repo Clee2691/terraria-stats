@@ -32,10 +32,9 @@ public class RCAdapter extends RecyclerView.Adapter<RCViewHolder> {
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBindViewHolder(@NonNull RCViewHolder holder, int position) {
-        RCUserCardView currUser = userList.get(position);
         // RCViewHolder class contains method to set data for card view
         // No need to do it here.
-        holder.setViewData(currUser);
+        holder.setViewData(userList.get(position));
     }
 
     @Override

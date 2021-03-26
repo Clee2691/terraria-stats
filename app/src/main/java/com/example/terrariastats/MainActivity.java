@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.util.JsonReader;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import org.json.JSONObject;
 
@@ -31,8 +33,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private final String ainrariaAPI = "https://ainraria.alvinlee.dev/ainraria/";
     private List<RCUserCardView> userList;
-    private JSONObject userPayLoad;
-    private int numUsers;
     RecyclerView rcvUser;
     RCAdapter rcAdapter;
 
@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
         this.getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
         userList = new ArrayList<>();
-        numUsers = 0;
         createUserRecyclerView();
     }
 
@@ -58,12 +57,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void populateUserRecyclerView(View view) {
-        // TODO: Implement a better solution for rapid get requests for users
-        // Need a way to get updated logins if needed
-        if((numUsers == 0) || (numUsers != userList.size())) {
-            GetUsers gUserThread = new GetUsers();
-            new Thread(gUserThread).start();
+        Button currBtn = findViewById(view.getId());
+        currBtn.setText("Wait...");
+        currBtn.setEnabled(false);
+        GetUsers gUserThread = new GetUsers();
+        if((userList.size() != 0)) {
+            userList.clear();
+            rcAdapter.notifyDataSetChanged();
         }
+        // Disable button and re-enable after 2 seconds.
+        // Avoids spamming the thread
+        currBtn.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                currBtn.setText("Get Users");
+                currBtn.setEnabled(true);
+            }
+        }, 2000);
+
+        new Thread(gUserThread).start();
     }
 
     // Thread runnable for fetching user data from API
@@ -123,11 +135,11 @@ public class MainActivity extends AppCompatActivity {
                 }
                 jReader.endObject();
                 createUserCards(userID, playerName, lastLogin);
-                numUsers++;
             }
             jReader.endArray();
         }
 
+        // TODO: Build this outside the thread
         @RequiresApi(api = Build.VERSION_CODES.O)
         private void createUserCards(int uID, String name, String loginTime) {
             LocalDateTime lastLog = LocalDateTime.parse(loginTime,

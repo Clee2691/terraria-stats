@@ -4,16 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/terraria_bg_currupt3"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/textViewLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="64dp"
         android:fontFamily="sans-serif-smallcaps"
         android:text="Ainraria Companion Stats"
-        android:textSize="24sp"
+        android:textColor="#FFFFFF"
+        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textViewSelectUser"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,32 +27,23 @@
         android:id="@+id/textViewSelectUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Select a user below!"
+        android:layout_marginStart="20sp"
+        android:layout_marginTop="24dp"
+        android:text="Select a user!"
+        android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/recyclerViewUserList"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewLogo" />
 
-    <Button
-        android:id="@+id/buttonGetStats"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="Display Stats!"
-        app:backgroundTint="#1976D2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerViewUserList" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewUserList"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:background="#A19C9C"
-        app:layout_constraintBottom_toTopOf="@+id/buttonGetStats"
+        android:layout_height="0dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="8dp"
+        android:background="#00A19C9C"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,8 +51,8 @@
 
     <Button
         android:id="@+id/buttonGetUsers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="230dp"
+        android:layout_height="43dp"
         android:layout_marginEnd="16dp"
         android:onClick="populateUserRecyclerView"
         android:text="Get Users"

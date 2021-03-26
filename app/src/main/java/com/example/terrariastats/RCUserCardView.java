@@ -11,7 +11,6 @@ public class RCUserCardView {
         this.userID = uID;
         this.userName = uName;
         this.lastLogin = userLastLogin;
-
     }
 
     public int getUserID() {
