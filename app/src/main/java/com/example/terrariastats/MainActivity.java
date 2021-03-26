@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Hides the title bar
         this.getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
         userList = new ArrayList<>();
@@ -57,12 +58,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void populateUserRecyclerView(View view) {
+        // TODO: Implement a better solution for rapid get requests for users
+        // Need a way to get updated logins if needed
         if((numUsers == 0) || (numUsers != userList.size())) {
             GetUsers gUserThread = new GetUsers();
             new Thread(gUserThread).start();
         }
     }
 
+    // Thread runnable for fetching user data from API
     class GetUsers implements Runnable {
         // Get users from an api call to https://ainraria.alvinlee.dev/ainraria/users
         @RequiresApi(api = Build.VERSION_CODES.O)
@@ -83,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
                 connectURL.setRequestMethod("GET");
                 connectURL.connect();
                 // Creates user card views for recycler view
+                // Need to read response, then create the cardview object
                 readJSONResponse(connectURL.getInputStream());
             } catch (IOException e) {
                 e.printStackTrace();
@@ -131,18 +136,5 @@ public class MainActivity extends AppCompatActivity {
             userList.add(userCard);
             rcAdapter.notifyItemInserted(userList.size()-1);
         }
-    }
-
-    // Set some demo data, will remove/ deprecate after
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    private void setDemoData() {
-        LocalDateTime lastLog = LocalDateTime.parse("2021-03-25T19:59:24.595Z",
-                DateTimeFormatter.ISO_ZONED_DATE_TIME);
-
-        RCUserCardView demoCard = new RCUserCardView(0,"Steeldrgn", lastLog);
-        userList.add(demoCard);
-        userList.add(demoCard);
-        userList.add(demoCard);
-
     }
 }
