@@ -1,9 +1,11 @@
 package com.example.terrariastats;
 
+import android.os.Build;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 
@@ -27,6 +29,7 @@ public class RCAdapter extends RecyclerView.Adapter<RCViewHolder> {
         return new RCViewHolder(v);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBindViewHolder(@NonNull RCViewHolder holder, int position) {
         RCUserCardView currUser = userList.get(position);

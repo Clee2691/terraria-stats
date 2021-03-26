@@ -1,6 +1,5 @@
 package com.example.terrariastats;
 
-import android.content.Intent;
 import android.os.Build;
 import android.util.Log;
 import android.view.View;
@@ -11,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 public class RCViewHolder extends RecyclerView.ViewHolder {
     public TextView userName;
@@ -39,12 +37,11 @@ public class RCViewHolder extends RecyclerView.ViewHolder {
     public void setViewData(RCUserCardView cardView) {
         this.userID.setText(String.valueOf(cardView.getUserID()));
         this.userName.setText(cardView.getUserName());
-        String lastLogin = parseDate(cardView.getLastLogin());
-        this.dateLastLogin.setText(lastLogin);
+        this.dateLastLogin.setText(formatDate(cardView.getLastLogin()));
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    private String parseDate(LocalDateTime lastLoginDate) {
+    private String formatDate(LocalDateTime lastLoginDate) {
         DateTimeFormatter customFormatter = DateTimeFormatter.ofPattern("dd MMM yyy | hh:mm a");
         return lastLoginDate.format(customFormatter);
     }
