@@ -26,12 +26,14 @@ import com.github.mikephil.charting.utils.MPPointF;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -82,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
         currBtn.setEnabled(false);
         GetUsers gUserThread = new GetUsers();
         GetServerStats gServeThread = new GetServerStats();
+
         if((userList.size() != 0)) {
             userList.clear();
             rcAdapter.notifyDataSetChanged();
@@ -198,6 +201,7 @@ public class MainActivity extends AppCompatActivity {
                     (numBoss+numMonsters+numTiles)));
             serverPieChart.invalidate();
         }
+
     }
 
     // Thread runnable for fetching user data from API
@@ -253,15 +257,18 @@ public class MainActivity extends AppCompatActivity {
                         playerName = jReader.nextString();
                     } else if (name.equals("lastLoginTime")) {
                         lastLogin = jReader.nextString();
+
                     } else if (name.equals("playTime")) {
                         playTime = jReader.nextDouble();
                     } else if (name.equals("numLogins")) {
                         numLogins = jReader.nextInt();
+
                     } else {
                         jReader.skipValue();
                     }
                 }
                 jReader.endObject();
+
                 createUserCards(userID, playerName, lastLogin, playTime, numLogins);
             }
             jReader.endArray();

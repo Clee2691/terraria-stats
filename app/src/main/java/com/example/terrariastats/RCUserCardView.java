@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 public class RCUserCardView {
     private int userID;
+
     private double playTime;
     private int numLogins;
     private String userName;
