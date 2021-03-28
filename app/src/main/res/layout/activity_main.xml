@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20sp"
         android:layout_marginTop="24dp"
-        android:text="Select a user!"
+        android:text="SELECT A USER!"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/recyclerViewUserList"
@@ -39,11 +39,9 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewUserList"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="250dp"
         android:layout_marginTop="64dp"
-        android:layout_marginBottom="8dp"
         android:background="#00A19C9C"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,14 +49,62 @@
 
     <Button
         android:id="@+id/buttonGetUsers"
-        android:layout_width="230dp"
-        android:layout_height="43dp"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
         android:layout_marginEnd="16dp"
         android:onClick="populateUserRecyclerView"
-        android:text="Get Users"
+        android:text="Get Server Info"
+        android:textColor="#FFFFFF"
         app:backgroundTint="#2BA830"
         app:layout_constraintBottom_toBottomOf="@+id/textViewSelectUser"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textViewSelectUser" />
 
+    <TextView
+        android:id="@+id/textViewServerStats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Server Stats"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewUserList" />
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/serverPieChart"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewServerStats" />
+
+    <TextView
+        android:id="@+id/textViewTotalPlayTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Total User Playtime"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/serverPieChart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/serverPieChart"
+        app:layout_constraintTop_toTopOf="@+id/serverPieChart" />
+
+    <TextView
+        android:id="@+id/textViewTotalUserTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/serverPieChart"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTotalPlayTitle" />
 </androidx.constraintlayout.widget.ConstraintLayout>
