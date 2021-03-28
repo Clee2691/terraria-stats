@@ -10,7 +10,8 @@ public class RCUserCardView {
     private String userName;
     private LocalDateTime lastLogin;
 
-    public RCUserCardView(int uID, String uName, LocalDateTime userLastLogin, double playSecs, int logins) {
+    public RCUserCardView(int uID, String uName, LocalDateTime userLastLogin,
+                          double playSecs, int logins) {
         this.userID = uID;
         this.userName = uName;
         this.lastLogin = userLastLogin;
