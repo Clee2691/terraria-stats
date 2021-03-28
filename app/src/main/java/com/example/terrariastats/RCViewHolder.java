@@ -15,7 +15,6 @@ import java.time.format.DateTimeFormatter;
 
 public class RCViewHolder extends RecyclerView.ViewHolder {
     public TextView userName;
-
     public TextView dateLastLogin;
     public ImageView dummyPicture;
     private int userID;
@@ -48,11 +47,9 @@ public class RCViewHolder extends RecyclerView.ViewHolder {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void setViewData(RCUserCardView cardView) {
-        //this.userID.setText(String.valueOf(cardView.getUserID()));
         this.userID = cardView.getUserID();
         this.playTime = cardView.getPlayTime();
         this.numLogins = cardView.getNumLogins();
-
         this.userName.setText(cardView.getUserName());
         this.dateLastLogin.setText(formatDate(cardView.getLastLogin()));
         this.dummyPicture.setImageResource(R.drawable.mannequin_45px);

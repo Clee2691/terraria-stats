@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".IndividualUserStats">
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/testBarChart"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewUser"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_marginTop="8dp"
+        app:cardBackgroundColor="#73DD0A"
+        app:cardCornerRadius="12dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/terraria_card_bg">
+
+            <TextView
+                android:id="@+id/cVUserName"
+                android:layout_width="105dp"
+                android:layout_height="22dp"
+                android:layout_marginTop="8dp"
+                android:text="TestUsername"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewIndPlayTimeTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textViewIndLastLoginTitle"
+                app:srcCompat="@drawable/mannequin_45px" />
+
+            <TextView
+                android:id="@+id/textViewIndLastLoginTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Last Login:"
+                android:textColor="#FFFFFF"
+                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintTop_toBottomOf="@+id/cVUserName" />
+
+            <TextView
+                android:id="@+id/textViewIndLastLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewIndLastLoginTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textViewIndNumLogTitle"
+                app:layout_constraintTop_toTopOf="@+id/textViewIndLastLoginTitle" />
+
+            <TextView
+                android:id="@+id/textViewIndNumLogTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Number of Logins: "
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toTopOf="@+id/textViewIndPlayTimeTitle"
+                app:layout_constraintStart_toStartOf="@+id/textViewIndLastLoginTitle"
+                app:layout_constraintTop_toBottomOf="@+id/textViewIndLastLoginTitle" />
+
+            <TextView
+                android:id="@+id/textViewIndNumLog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewIndNumLogTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textViewIndNumLogTitle"
+                app:layout_constraintTop_toTopOf="@+id/textViewIndNumLogTitle" />
+
+            <TextView
+                android:id="@+id/textViewIndPlayTimeTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Play Time: "
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/textViewIndNumLogTitle" />
+
+            <TextView
+                android:id="@+id/textViewIndPlayTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewIndPlayTimeTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textViewIndNumLogTitle"
+                app:layout_constraintTop_toTopOf="@+id/textViewIndPlayTimeTitle" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
