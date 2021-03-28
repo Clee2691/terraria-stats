@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
@@ -64,10 +65,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void setPieChartStyle () {
         serverPieChart = findViewById(R.id.serverPieChart);
-        serverPieChart.setCenterText("Total Entities Killed");
         serverPieChart.setNoDataText("Press Get Server Info!");
         serverPieChart.setEntryLabelColor(Color.WHITE);
         serverPieChart.setEntryLabelTextSize(12f);
+        Description serverChartDesc = serverPieChart.getDescription();
+        serverChartDesc.setEnabled(false);
 
         Legend pieLegend = serverPieChart.getLegend();
         pieLegend.setTextColor(Color.WHITE);
@@ -177,21 +179,24 @@ public class MainActivity extends AppCompatActivity {
 
             PieDataSet pieDataSet = new PieDataSet(pieChartDataList, "Entities");
             ArrayList<Integer> colors = new ArrayList<>();
-            for (int color : ColorTemplate.PASTEL_COLORS) {
-                colors.add(color);
-            }
+
+            colors.add(Color.rgb(248, 0, 113));
+            colors.add(Color.rgb(24, 194, 233));
+            colors.add(Color.rgb(77, 95, 209));
 
             pieDataSet.setColors(colors);
-            pieDataSet.setSliceSpace(3f);
+            pieDataSet.setSliceSpace(1.5f);
             pieDataSet.setYValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
             pieDataSet.setXValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
             pieDataSet.setValueLineColor(Color.WHITE);
+
             PieData pieData = new PieData(pieDataSet);
             pieData.setValueTextColor(Color.WHITE);
             pieData.setValueTextSize(12f);
             serverPieChart.setData(pieData);
+            serverPieChart.setCenterText(String.format("%d total entities",
+                    (numBoss+numMonsters+numTiles)));
             serverPieChart.invalidate();
-
         }
     }
 
