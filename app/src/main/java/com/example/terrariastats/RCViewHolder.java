@@ -2,10 +2,7 @@ package com.example.terrariastats;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
-import android.media.Image;
 import android.os.Build;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -27,7 +24,6 @@ public class RCViewHolder extends RecyclerView.ViewHolder {
 
     public RCViewHolder(View view) {
         super(view);
-
         this.userName = view.findViewById(R.id.textViewUserName);
         this.dateLastLogin = view.findViewById(R.id.textViewDateLastLogin);
         this.dummyPicture = view.findViewById(R.id.imageViewDummyPic);

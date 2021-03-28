@@ -20,8 +20,6 @@ import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.utils.ColorTemplate;
-import com.github.mikephil.charting.utils.MPPointF;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -78,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         pieLegend.setWordWrapEnabled(true);
     }
 
-    public void populateUserRecyclerView(View view) throws InterruptedException, IOException {
+    public void populateUserRecyclerView(View view) {
         Button currBtn = findViewById(view.getId());
         currBtn.setText("Wait...");
         currBtn.setEnabled(false);
